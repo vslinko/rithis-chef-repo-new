@@ -1,0 +1,13 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site "http://community.opscode.com/api/v1"
+
+cookbook "apt"
+cookbook "chef-server"
+cookbook "sudo"
+cookbook "ubuntu"
+cookbook "users"
+cookbook "zsh"
+
+cookbook "vyacheslav-dotfiles", :path => "my_cookbooks/vyacheslav-dotfiles"
