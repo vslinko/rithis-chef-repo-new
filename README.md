@@ -73,3 +73,9 @@ $ knife data bag from file users vyacheslav.json
 ```
 $ knife bootstrap chef.rithis.com -x root -r "role[chef-server]"
 ```
+
+Настройте все оставшиеся сервера:
+
+```
+$ knife bootstrap teamcity.rithis.com -N teamcity -x root -r "role[teamcity]"
+```
