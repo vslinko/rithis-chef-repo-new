@@ -1,5 +1,6 @@
 include_recipe "java"
 include_recipe "runit"
+include_recipe "nginx"
 
 cwd = "/opt"
 archive_name = "TeamCity-#{node["teamcity"]["version"]}.tar.gz"
@@ -25,3 +26,10 @@ end
 runit_service "teamcity-build-agent" do
     log false
 end
+
+template "#{node["nginx"]["dir"]}/sites-available/teamcity.rithis.com" do
+  source "teamcity.rithis.com.erb"
+  notifies :reload, "service[nginx]"
+end
+
+nginx_site "teamcity.rithis.com"
