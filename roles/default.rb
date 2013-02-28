@@ -1,4 +1,4 @@
-name "node"
+name "default"
 
 run_list(
     "recipe[ubuntu]",

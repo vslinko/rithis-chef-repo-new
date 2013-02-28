@@ -1,6 +1,6 @@
 name "chef-server"
 
 run_list(
-    "role[node]",
+    "role[default]",
     "recipe[chef-server]"
 )

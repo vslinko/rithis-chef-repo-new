@@ -1,7 +1,7 @@
 name "teamcity"
 
 run_list(
-    "role[node]",
+    "role[default]",
     "recipe[node-build-agent]",
     "recipe[teamcity]"
 )

@@ -1,6 +1,6 @@
 name "node-uptime"
 
 run_list(
-    "role[node]",
+    "role[default]",
     "recipe[node-uptime]"
 )
