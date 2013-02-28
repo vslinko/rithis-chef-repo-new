@@ -78,4 +78,5 @@ $ knife bootstrap chef.rithis.com -x root -r "role[chef-server]"
 
 ```
 $ knife bootstrap teamcity.rithis.com -N teamcity -x root -r "role[teamcity]"
+$ knife bootstrap uptime.rithis.com -N uptime -x root -r "role[node-uptime]"
 ```

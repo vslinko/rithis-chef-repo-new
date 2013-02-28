@@ -1,0 +1,6 @@
+#!/bin/sh
+
+cd "<%= node["node-uptime"]["dir"] %>"
+
+exec 2>&1
+NODE_ENV=production exec /usr/local/bin/node app.js
