@@ -77,14 +77,14 @@ SITE
 PATH
   remote: my_cookbooks/node-build-agent
   specs:
-    node-build-agent (0.0.0)
+    node-build-agent (0.0.1)
       mongodb (>= 0.0.0)
       nodejs (>= 0.0.0)
 
 PATH
   remote: my_cookbooks/node-uptime
   specs:
-    node-uptime (0.0.0)
+    node-uptime (0.0.1)
       mongodb (>= 0.0.0)
       nodejs (>= 0.0.0)
       runit (>= 0.0.0)
@@ -92,7 +92,7 @@ PATH
 PATH
   remote: my_cookbooks/staging
   specs:
-    staging (0.0.1)
+    staging (0.0.2)
       chef-client (>= 0.0.0)
       mongodb (>= 0.0.0)
       nginx (>= 0.0.0)
@@ -102,7 +102,7 @@ PATH
 PATH
   remote: my_cookbooks/teamcity
   specs:
-    teamcity (0.0.0)
+    teamcity (0.0.1)
       java (>= 0.0.0)
       nginx (>= 0.0.0)
       runit (>= 0.0.0)
@@ -110,7 +110,7 @@ PATH
 PATH
   remote: my_cookbooks/vyacheslav-dotfiles
   specs:
-    vyacheslav-dotfiles (0.0.0)
+    vyacheslav-dotfiles (0.0.1)
       git (>= 0.0.0)
 
 DEPENDENCIES

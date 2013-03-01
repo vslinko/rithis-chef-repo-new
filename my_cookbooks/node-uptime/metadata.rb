@@ -1,6 +1,6 @@
 name "node-uptime"
-version "0.0.0"
+version "0.0.1"
 
-%w{nodejs mongodb runit}.each do |cookbook|
-    depends cookbook
+%w{mongodb nodejs runit}.each do |cookbook|
+  depends cookbook
 end

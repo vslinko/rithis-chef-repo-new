@@ -1,6 +1,6 @@
 name "staging"
-version "0.0.1"
+version "0.0.2"
 
-%w{nodejs mongodb runit nginx chef-client}.each do |cookbook|
-    depends cookbook
+%w{chef-client mongodb nginx nodejs runit}.each do |cookbook|
+  depends cookbook
 end

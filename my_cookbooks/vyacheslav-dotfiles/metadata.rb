@@ -1,6 +1,6 @@
 name "vyacheslav-dotfiles"
-version "0.0.0"
+version "0.0.1"
 
 %w{git}.each do |cookbook|
-    depends cookbook
+  depends cookbook
 end

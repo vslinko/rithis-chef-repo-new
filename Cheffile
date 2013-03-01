@@ -11,13 +11,13 @@ cookbook "users"
 cookbook "zsh"
 
 my_cookbooks = %w{
-    node-build-agent
-    node-uptime
-    staging
-    teamcity
-    vyacheslav-dotfiles
+  node-build-agent
+  node-uptime
+  staging
+  teamcity
+  vyacheslav-dotfiles
 }
 
 my_cookbooks.each do |my_cookbook|
-    cookbook my_cookbook, :path => "my_cookbooks/#{my_cookbook}"
+  cookbook my_cookbook, :path => "my_cookbooks/#{my_cookbook}"
 end

@@ -1,7 +1,7 @@
 <% @projects.each do |project| %>
 server {
     listen 80;
-    server_name <%= project["reversed_name"] %>.staging.rithis.com;
+    server_name <%= project["subdomain"] %>.staging.rithis.com;
 
     location / {
         proxy_pass http://127.0.0.1:<%= project["port"] %>;
