@@ -67,7 +67,7 @@ $ knife role from file roles/*
 $ knife data bag create users
 $ knife data bag create staging_projects
 $ knife data bag from file users vyacheslav.json
-$ knife data bag from file staging_projects barbudos.json
+$ knife data bag from file staging_projects data_bags/staging_projects/*
 ```
 
 Передайте chef.rithis.com под контроль сервера Chef:
