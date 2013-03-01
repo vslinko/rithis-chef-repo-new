@@ -1,5 +1,7 @@
 {
     "id": "barbudos",
-    "repository": "git://github.com/rithis/barbudos.git",
-    "references": ["develop", "feature/supplier"]
+    "github": {
+        "user": "rithis",
+        "repo": "barbudos"
+    }
 }

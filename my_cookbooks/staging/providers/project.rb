@@ -19,7 +19,8 @@ action :enable do
     runit_service "staging-#{new_resource.name}" do
         options(
             :dir => dir,
-            :port => new_resource.port
+            :port => new_resource.port,
+            :script => new_resource.script
         )
         default_logger true
         run_template_name "staging"

@@ -92,7 +92,7 @@ PATH
 PATH
   remote: my_cookbooks/staging
   specs:
-    staging (0.0.0)
+    staging (0.0.1)
       chef-client (>= 0.0.0)
       mongodb (>= 0.0.0)
       nginx (>= 0.0.0)
