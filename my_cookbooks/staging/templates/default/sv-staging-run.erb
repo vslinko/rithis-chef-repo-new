@@ -1,0 +1,4 @@
+#!/bin/sh
+
+cd "<%= @options[:dir] %>"
+PORT=<%= @options[:port] %> exec $(underscore -i package.json extract scripts.start --outfmt text)

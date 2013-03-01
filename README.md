@@ -65,7 +65,9 @@ $ knife configure --defaults --server-url http://chef.rithis.com:4000 --validati
 $ knife cookbook upload --all
 $ knife role from file roles/*
 $ knife data bag create users
+$ knife data bag create staging_projects
 $ knife data bag from file users vyacheslav.json
+$ knife data bag from file staging_projects barbudos.json
 ```
 
 Передайте chef.rithis.com под контроль сервера Chef:
@@ -79,4 +81,5 @@ $ knife bootstrap chef.rithis.com -x root -r "role[chef-server]"
 ```
 $ knife bootstrap teamcity.rithis.com -N teamcity -x root -r "role[teamcity]"
 $ knife bootstrap uptime.rithis.com -N uptime -x root -r "role[node-uptime]"
+$ knife bootstrap staging.rithis.com -N staging -x root -r "role[staging]"
 ```
