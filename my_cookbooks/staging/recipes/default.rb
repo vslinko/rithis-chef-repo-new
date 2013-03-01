@@ -42,7 +42,7 @@ data_bag("staging_projects").each do |name|
       rescue => e
         Chef::Log.warn "Unable to load #{package_url}, reason #{e}"
       else
-        reversed_name = branch.split("/").reverse.push(repo)
+        reversed_name = branch.split("/").reverse.push(name)
 
         projects.push(
           "name" => reversed_name.reverse.join("."),
