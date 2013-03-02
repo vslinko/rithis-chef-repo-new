@@ -113,6 +113,14 @@ PATH
     vyacheslav-dotfiles (0.0.1)
       git (>= 0.0.0)
 
+PATH
+  remote: my_cookbooks/youtrack
+  specs:
+    youtrack (0.0.0)
+      java (>= 0.0.0)
+      nginx (>= 0.0.0)
+      runit (>= 0.0.0)
+
 DEPENDENCIES
   apt (>= 0)
   chef-server (>= 0)
@@ -124,5 +132,6 @@ DEPENDENCIES
   ubuntu (>= 0)
   users (>= 0)
   vyacheslav-dotfiles (>= 0)
+  youtrack (>= 0)
   zsh (>= 0)
 

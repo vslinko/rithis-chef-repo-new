@@ -59,6 +59,14 @@ $ scp root@chef.rithis.com:/etc/chef/validation.pem ~/.chef/validation.pem
 $ knife configure --defaults --server-url http://chef.rithis.com:4000 --validation-key ~/.chef/validation.pem --repository "$(pwd)"
 ```
 
+Сохраните данные для авторизации к API
+[Digital Ocean](https://www.digitalocean.com/api_access):
+
+```
+$ echo "knife[:digital_ocean_client_id] = \"Client Key\"" >> ~/.chef/knife.rb
+$ echo "knife[:digital_ocean_api_key] = \"API Key\"" >> ~/.chef/knife.rb
+```
+
 Загрузите конфигурацию Chef на сервер:
 
 ```
@@ -76,10 +84,22 @@ $ knife data bag from file staging_projects data_bags/staging_projects/*
 $ knife bootstrap chef.rithis.com -x root -r "role[chef-server]"
 ```
 
+Получите все настройки Digital Ocean:
+
+```
+$ UBUNTU=$(knife digital_ocean image list --global | grep "Ubuntu 12.04 x32 Server" | awk '{print $1}')
+$ AMSTERDAM=$(knife digital_ocean region list | grep "Amsterdam 1" | awk '{print $1}')
+$ SIZE512=$(knife digital_ocean size list | grep "512MB" | awk '{print $1}')
+$ SIZE1024=$(knife digital_ocean size list | grep "1GB" | awk '{print $1}')
+$ SSHKEYS=$(knife digital_ocean sshkey list | grep "^\d" | awk '{print $1}' | paste -sd "," -)
+```
+
 Настройте все оставшиеся сервера:
 
 ```
-$ knife bootstrap teamcity.rithis.com -N teamcity -x root -r "role[teamcity]"
-$ knife bootstrap uptime.rithis.com -N uptime -x root -r "role[node-uptime]"
-$ knife bootstrap staging.rithis.com -N staging -x root -r "role[staging]"
+$ bootstrap() { knife digital_ocean droplet create --server-name $1.rithis.com --image $UBUNTU --location $AMSTERDAM --size $2 --ssh-keys $SSHKEYS --bootstrap --run-list "role[$1]" }
+$ bootstrap teamcity $SIZE1024
+$ bootstrap uptime $SIZE512
+$ bootstrap staging $SIZE1024
+$ bootstrap youtrack $SIZE512
 ```

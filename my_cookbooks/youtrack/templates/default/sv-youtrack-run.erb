@@ -1,0 +1,4 @@
+#!/bin/sh
+
+exec 2>&1
+exec java -Xmx384m -Djava.awt.headless=true -jar <%= @options[:jar] %> <%= @options[:port] %>

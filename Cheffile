@@ -16,6 +16,7 @@ my_cookbooks = %w{
   staging
   teamcity
   vyacheslav-dotfiles
+  youtrack
 }
 
 my_cookbooks.each do |my_cookbook|
