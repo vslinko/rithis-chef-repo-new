@@ -1,10 +1,14 @@
+include_recipe "bluepill"
 include_recipe "java"
 include_recipe "nginx"
-include_recipe "runit"
 
-port = 3000
+port = 8112
 jar_name = "youtrack-#{node["youtrack"]["version"]}.jar"
-jar = "/opt/#{jar_name}"
+jar = "/opt/YouTrack/bin/#{jar_name}"
+
+directory "/opt/YouTrack"
+directory "/opt/YouTrack/bin"
+directory "/opt/YouTrack/logs"
 
 remote_file jar do
   backup false
@@ -12,12 +16,21 @@ remote_file jar do
   action :create_if_missing
 end
 
-runit_service "youtrack" do
-  options(
+template "/opt/YouTrack/bin/start.sh" do
+  mode 0755
+  source "start.sh.erb"
+  variables(
     :jar => jar,
     :port => port
   )
-  default_logger true
+end
+
+template "#{node["bluepill"]["conf_dir"]}/youtrack.pill" do
+  source "youtrack.pill.erb"
+end
+
+bluepill_service "youtrack" do
+  action [:enable, :load, :start]
 end
 
 template "#{node["nginx"]["dir"]}/sites-available/youtrack.rithis.com" do

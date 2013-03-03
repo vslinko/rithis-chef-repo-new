@@ -3,12 +3,15 @@ include_recipe "nginx"
 
 template "/opt/TeamCity/conf/server.xml" do
   source "server.xml.erb"
-  notifies :restart, "runit_service[teamcity-server]"
+  notifies :restart, "bluepill_service[teamcity-server]"
 end
 
-runit_service "teamcity-server" do
-  default_logger true
-  action :nothing
+template "#{node["bluepill"]["conf_dir"]}/teamcity-server.pill" do
+  source "teamcity-server.pill.erb"
+end
+
+bluepill_service "teamcity-server" do
+  action [:enable, :load, :start]
 end
 
 template "#{node["nginx"]["dir"]}/sites-available/teamcity.rithis.com" do

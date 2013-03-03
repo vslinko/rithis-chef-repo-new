@@ -33,11 +33,14 @@ unless node["teamcity"]["build_agent"]["server_url"].nil?
       :own_address => own_address,
       :authorization_token => authorization_token
     )
-    notifies :restart, "runit_service[teamcity-build-agent]"
+    notifies :restart, "bluepill_service[teamcity-build-agent]"
   end
 
-  runit_service "teamcity-build-agent" do
-    default_logger true
-    action :nothing
+  template "#{node["bluepill"]["conf_dir"]}/teamcity-build-agent.pill" do
+    source "teamcity-build-agent.pill.erb"
+  end
+
+  bluepill_service "teamcity-build-agent" do
+    action [:enable, :load, :start]
   end
 end

@@ -1,0 +1,4 @@
+#!/bin/sh
+
+nohup java -Xmx384m -Djava.awt.headless=true -jar <%= @jar %> <%= @port %> > /opt/YouTrack/logs/output.log 2> /opt/YouTrack/logs/error.log &
+echo $! > /opt/YouTrack/logs/youtrack.pid

@@ -1,6 +1,6 @@
 name "youtrack"
-version "0.0.0"
+version "0.0.1"
 
-%w{java nginx runit}.each do |cookbook|
+%w{bluepill java nginx}.each do |cookbook|
   depends cookbook
 end

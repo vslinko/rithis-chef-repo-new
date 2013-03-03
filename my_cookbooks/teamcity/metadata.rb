@@ -1,6 +1,6 @@
 name "teamcity"
-version "0.0.2"
+version "0.0.3"
 
-%w{java nginx runit}.each do |cookbook|
+%w{bluepill java nginx}.each do |cookbook|
   depends cookbook
 end

@@ -103,10 +103,10 @@ PATH
 PATH
   remote: my_cookbooks/teamcity
   specs:
-    teamcity (0.0.2)
+    teamcity (0.0.3)
+      bluepill (>= 0.0.0)
       java (>= 0.0.0)
       nginx (>= 0.0.0)
-      runit (>= 0.0.0)
 
 PATH
   remote: my_cookbooks/vyacheslav-dotfiles
@@ -117,10 +117,10 @@ PATH
 PATH
   remote: my_cookbooks/youtrack
   specs:
-    youtrack (0.0.0)
+    youtrack (0.0.1)
+      bluepill (>= 0.0.0)
       java (>= 0.0.0)
       nginx (>= 0.0.0)
-      runit (>= 0.0.0)
 
 DEPENDENCIES
   apt (>= 0)
