@@ -1,6 +1,6 @@
 name "node-build-agent"
-version "0.0.1"
+version "0.0.2"
 
-%w{mongodb nodejs}.each do |cookbook|
+%w{mongodb nodejs teamcity}.each do |cookbook|
   depends cookbook
 end

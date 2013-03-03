@@ -77,9 +77,10 @@ SITE
 PATH
   remote: my_cookbooks/node-build-agent
   specs:
-    node-build-agent (0.0.1)
+    node-build-agent (0.0.2)
       mongodb (>= 0.0.0)
       nodejs (>= 0.0.0)
+      teamcity (>= 0.0.0)
 
 PATH
   remote: my_cookbooks/node-uptime
@@ -102,7 +103,7 @@ PATH
 PATH
   remote: my_cookbooks/teamcity
   specs:
-    teamcity (0.0.1)
+    teamcity (0.0.2)
       java (>= 0.0.0)
       nginx (>= 0.0.0)
       runit (>= 0.0.0)
