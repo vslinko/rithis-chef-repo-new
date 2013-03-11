@@ -3,11 +3,9 @@ SITE
   specs:
     apache2 (1.6.0)
     apt (1.9.0)
-    bluepill (2.2.0)
+    bluepill (2.2.2)
       rsyslog (>= 0.0.0)
     build-essential (1.3.4)
-    chef-client (2.2.0)
-      cron (>= 0.0.0)
     chef-server (1.1.0)
       apache2 (>= 0.0.0)
       bluepill (>= 0.0.0)
@@ -22,10 +20,9 @@ SITE
       xml (>= 0.0.0)
       zlib (>= 0.0.0)
     chef_handler (1.1.4)
-    couchdb (2.2.0)
+    couchdb (2.4.0)
       erlang (>= 0.0.0)
       yum (>= 0.0.0)
-    cron (1.2.2)
     daemontools (1.0.0)
       build-essential (>= 0.0.0)
       ucspi-tcp (>= 0.0.0)
@@ -43,7 +40,7 @@ SITE
       runit (~> 1.0)
       windows (>= 0.0.0)
       yum (>= 0.0.0)
-    java (1.9.6)
+    java (1.10.0)
       windows (>= 0.0.0)
     mongodb (0.11.0)
       apt (>= 0.0.0)
@@ -52,87 +49,67 @@ SITE
       build-essential (>= 0.0.0)
       ohai (>= 1.1.4)
       yum (>= 0.0.0)
-    nodejs (1.0.2)
+    nodejs (1.1.0)
       apt (>= 0.0.0)
       build-essential (>= 0.0.0)
     ohai (1.1.8)
-    openssl (1.0.0)
+    openssl (1.0.2)
     rsyslog (1.5.0)
     runit (1.1.0)
       build-essential (>= 0.0.0)
     sudo (2.0.4)
+    teamcity_server (0.0.0)
+      bluepill (>= 0.0.0)
+      java (>= 0.0.0)
     ubuntu (1.1.2)
       apt (>= 0.0.0)
     ucspi-tcp (1.0.0)
       build-essential (>= 0)
-    users (1.3.0)
+    vslinko (0.0.2)
+      git (>= 0.0.0)
+      sudo (>= 0.0.0)
+      zsh (>= 0.0.0)
     windows (1.8.4)
       chef_handler (>= 0.0.0)
     xml (1.1.2)
       build-essential (>= 0.0.0)
+    youtrack (0.0.0)
+      bluepill (>= 0.0.0)
+      java (>= 0.0.0)
     yum (2.1.0)
     zlib (2.0.0)
     zsh (1.0.0)
 
 PATH
-  remote: my_cookbooks/node-build-agent
+  remote: rithis/teamcity_build_agent
   specs:
-    node-build-agent (0.0.2)
+    rithis_teamcity_build_agent (0.0.0)
       mongodb (>= 0.0.0)
       nodejs (>= 0.0.0)
-      teamcity (>= 0.0.0)
+      teamcity_server (>= 0.0.0)
 
 PATH
-  remote: my_cookbooks/node-uptime
+  remote: rithis/teamcity_server
   specs:
-    node-uptime (0.0.1)
-      mongodb (>= 0.0.0)
-      nodejs (>= 0.0.0)
-      runit (>= 0.0.0)
-
-PATH
-  remote: my_cookbooks/staging
-  specs:
-    staging (0.0.2)
-      chef-client (>= 0.0.0)
-      mongodb (>= 0.0.0)
+    rithis_teamcity_server (0.0.0)
       nginx (>= 0.0.0)
-      nodejs (>= 0.0.0)
-      runit (>= 0.0.0)
+      teamcity_server (>= 0.0.0)
 
 PATH
-  remote: my_cookbooks/teamcity
+  remote: rithis/youtrack
   specs:
-    teamcity (0.0.3)
-      bluepill (>= 0.0.0)
-      java (>= 0.0.0)
+    rithis_youtrack (0.0.0)
       nginx (>= 0.0.0)
-
-PATH
-  remote: my_cookbooks/vyacheslav-dotfiles
-  specs:
-    vyacheslav-dotfiles (0.0.1)
-      git (>= 0.0.0)
-
-PATH
-  remote: my_cookbooks/youtrack
-  specs:
-    youtrack (0.0.1)
-      bluepill (>= 0.0.0)
-      java (>= 0.0.0)
-      nginx (>= 0.0.0)
+      youtrack (>= 0.0.0)
 
 DEPENDENCIES
   apt (>= 0)
   chef-server (>= 0)
-  node-build-agent (>= 0)
-  node-uptime (>= 0)
-  staging (>= 0)
-  sudo (>= 0)
-  teamcity (>= 0)
+  rithis_teamcity_build_agent (>= 0)
+  rithis_teamcity_server (>= 0)
+  rithis_youtrack (>= 0)
+  teamcity_server (>= 0)
   ubuntu (>= 0)
-  users (>= 0)
-  vyacheslav-dotfiles (>= 0)
+  vslinko (>= 0)
   youtrack (>= 0)
-  zsh (>= 0)
 

@@ -1,6 +1,0 @@
-#!/bin/sh
-
-cd "<%= @options[:dir] %>"
-
-exec 2>&1
-PORT=<%= @options[:port] %> exec <%= @options[:script] %>

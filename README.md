@@ -56,7 +56,7 @@ $ librarian-chef install
 $ mkdir ~/.chef
 $ scp root@chef.rithis.com:/tmp/vyacheslav.pem ~/.chef/vyacheslav.pem
 $ scp root@chef.rithis.com:/etc/chef/validation.pem ~/.chef/validation.pem
-$ knife configure --defaults --server-url http://chef.rithis.com:4000 --validation-key ~/.chef/validation.pem --repository "$(pwd)"
+$ knife configure --defaults --server-url http://chef.rithis.com:4000 --validation-key ~/.chef/validation.pem --repository ""
 ```
 
 Сохраните данные для авторизации к API
@@ -70,18 +70,14 @@ $ echo "knife[:digital_ocean_api_key] = \"API Key\"" >> ~/.chef/knife.rb
 Загрузите конфигурацию Chef на сервер:
 
 ```
-$ knife cookbook upload --all
+$ knife cookbook upload -ao cookbooks
 $ knife role from file roles/*
-$ knife data bag create users
-$ knife data bag create staging_projects
-$ knife data bag from file users vyacheslav.json
-$ knife data bag from file staging_projects data_bags/staging_projects/*
 ```
 
 Передайте chef.rithis.com под контроль сервера Chef:
 
 ```
-$ knife bootstrap chef.rithis.com -x root -r "role[chef-server]"
+$ knife bootstrap chef.rithis.com -N chef.rithis.com -x root -r "role[rithis_chef_server]"
 ```
 
 Получите все настройки Digital Ocean:
@@ -97,9 +93,8 @@ $ SSHKEYS=$(knife digital_ocean sshkey list | grep "^\d" | awk '{print $1}' | pa
 Настройте все оставшиеся сервера:
 
 ```
-$ bootstrap() { knife digital_ocean droplet create --server-name $1.rithis.com --image $UBUNTU --location $AMSTERDAM --size $2 --ssh-keys $SSHKEYS --bootstrap --run-list "role[$1]" }
-$ bootstrap teamcity $SIZE1024
-$ bootstrap uptime $SIZE512
-$ bootstrap staging $SIZE1024
-$ bootstrap youtrack $SIZE512
+$ bootstrap() { knife digital_ocean droplet create --server-name $1.rithis.com --image $UBUNTU --location $AMSTERDAM --size $3 --ssh-keys $SSHKEYS --bootstrap --run-list "role[$2]" }
+$ bootstrap teamcity rithis_teamcity_server $SIZE1024
+$ bootstrap agent0.teamcity rithis_teamcity_build_agent $SIZE1024
+$ bootstrap youtrack rithis_youtrack $SIZE512
 ```

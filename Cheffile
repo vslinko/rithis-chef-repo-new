@@ -3,22 +3,16 @@
 
 site "http://community.opscode.com/api/v1"
 
-cookbook "apt"
-cookbook "chef-server"
-cookbook "sudo"
-cookbook "ubuntu"
-cookbook "users"
-cookbook "zsh"
+%w{ apt teamcity_server chef-server ubuntu vslinko youtrack }.each do |cb|
+  cookbook cb
+end
 
-my_cookbooks = %w{
-  node-build-agent
-  node-uptime
-  staging
-  teamcity
-  vyacheslav-dotfiles
+rithis_cookbooks = %w{
+  teamcity_build_agent
+  teamcity_server
   youtrack
 }
 
-my_cookbooks.each do |my_cookbook|
-  cookbook my_cookbook, :path => "my_cookbooks/#{my_cookbook}"
+rithis_cookbooks.each do |suffix|
+  cookbook "rithis_#{suffix}", :path => "rithis/#{suffix}"
 end

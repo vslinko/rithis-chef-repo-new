@@ -1,1 +1,0 @@
-default["staging"]["dir"] = "/srv"
