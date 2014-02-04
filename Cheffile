@@ -11,6 +11,7 @@ rithis_cookbooks = %w{
   teamcity_build_agent
   teamcity_server
   youtrack
+  tarsnap
 }
 
 rithis_cookbooks.each do |suffix|

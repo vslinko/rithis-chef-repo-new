@@ -1,0 +1,8 @@
+task :vagrant, [:command] do |t, args|
+  v_cmd = args.command || "provision"
+  system "/Applications/Vagrant/bin/vagrant #{v_cmd}"
+end
+
+task :test do
+  system "foodcritic ."
+end
